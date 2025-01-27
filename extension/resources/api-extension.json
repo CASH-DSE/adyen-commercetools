@@ -1,8 +1,8 @@
 {
-  "key": "ctp-adyen-integration-payment-extension",
+  "key": "ctp-adyen-integration-payment-extension-dsepoc",
   "destination": {
-    "type": "HTTP",
-    "url": "${ctpAdyenIntegrationBaseUrl}"
+    "type": "GoogleCloudFunction",
+    "url": "https://australia-southeast1-green-entity-417816.cloudfunctions.net/POCPaymentExtension"
   },
   "triggers": [
     {
