@@ -287,12 +287,6 @@ async function calculateUpdateActionsForPayment(payment, notification, logger) {
         })
       }
     }
-
-    const updateOrderPaymentStateAction = getChangeOrderPaymentStateUpdateAction(notification);
-
-    if(updateOrderPaymentStateAction) {
-      updateActions.push(updateOrderPaymentStateAction)
-    }
   }
 
   const paymentMethodFromPayment = payment.paymentMethodInfo.method
@@ -337,34 +331,34 @@ function compareTransactionStates(currentState, newState) {
   return transactionStateFlow[newState] - transactionStateFlow[currentState]
 }
 
-function getChangeOrderPaymentStateUpdateAction(notification) {
-  const eventCodeMapper = {
-    'AUTHORISATION': function(success) {
-      if(success) {
-        // CUSTOMIZE change order payment state
-        return {
-          action: 'changePaymentState',
-          paymentState: "Paid"
-        }
-      }
-    },
-    // "CAPTURE": function(success) {
-    //   if(success) {
-    //     return {
-    //       action: 'changePaymentState',
-    //       paymentState: "Paid"
-    //     }
-    //   }
-    // },
-  }
+// function getChangeOrderPaymentStateUpdateAction(notification) {
+//   const eventCodeMapper = {
+//     'AUTHORISATION': function(success) {
+//       if(success) {
+//         // CUSTOMIZE change order payment state
+//         return {
+//           action: 'changePaymentState',
+//           paymentState: "Paid"
+//         }
+//       }
+//     },
+//     // "CAPTURE": function(success) {
+//     //   if(success) {
+//     //     return {
+//     //       action: 'changePaymentState',
+//     //       paymentState: "Paid"
+//     //     }
+//     //   }
+//     // },
+//   }
 
-  const eventCode = notification.NotificationRequestItem.eventCode;
-  const success = notification.NotificationRequestItem.success;
-  const operation = eventCodeMapper[eventCode];
-  if(operation) {
-    return operation(success)
-  }
-}
+//   const eventCode = notification.NotificationRequestItem.eventCode;
+//   const success = notification.NotificationRequestItem.success;
+//   const operation = eventCodeMapper[eventCode];
+//   if(operation) {
+//     return operation(success)
+//   }
+// }
 
 function getAddInterfaceInteractionUpdateAction(notification) {
   const moduleConfig = config.getModuleConfig()
