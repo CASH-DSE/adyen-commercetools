@@ -85,8 +85,7 @@ async function processNotification({
       if (
         retryCount < maxRetry &&
         (notification.NotificationRequestItem.eventCode === 'AUTHORISATION' ||
-          notification.NotificationRequestItem.eventCode === 'CAPTURE' ||
-          notification.NotificationRequestItem.eventCode === 'RECURRING_CONTRACT')
+          notification.NotificationRequestItem.eventCode === 'CAPTURE')
       ) {
         await sleep(1000)
         await handleWebhook()
