@@ -56,6 +56,10 @@ function getAdyenConfig(adyenMerchantAccount) {
   }
 }
 
+function getMysqlConfig() {
+  return config.mysql
+}
+
 function getAllCtpProjectKeys() {
   return Object.keys(config.commercetools)
 }
@@ -125,6 +129,7 @@ loadAndValidateConfig()
 
 // Using default, because the file needs to be exported as object.
 export default {
+  getMysqlConfig,
   getModuleConfig,
   getCtpConfig,
   getAdyenConfig,

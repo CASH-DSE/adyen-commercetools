@@ -13,6 +13,12 @@ process.env.ADYEN_INTEGRATION_CONFIG = JSON.stringify({
       clientSecret: 'clientSecret3',
     },
   },
+  mysql: {
+    user: 'user',
+    password: 'password',
+    database: 'database',
+    socketPath: 'socketPath'
+  },
   adyen: {
     adyenMerchantAccount1: {
       apiKey: 'apiKey',

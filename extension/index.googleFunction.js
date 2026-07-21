@@ -1,6 +1,7 @@
 import paymentHandler from './src/paymentHandler/payment-handler.js'
 import utils from './src/utils.js'
 import { getAuthorizationRequestHeader } from './src/validator/authentication.js'
+import db from "./src/db.js";
 
 const { handleUnexpectedPaymentError } = utils
 
@@ -17,6 +18,12 @@ export const extensionTrigger = async (request, response) => {
         ],
       })
     }
+    await db.insertInto('payment_log')
+      .values({
+        req_res_flag: 'q',
+        payload: JSON.stringify(paymentObj)
+      })
+      .execute();
     const authToken = getAuthorizationRequestHeader(request)
     const paymentResult = await paymentHandler.handlePayment(
       paymentObj,

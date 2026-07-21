@@ -63,6 +63,8 @@
     "sinon": "19.0.2"
   },
   "dependencies": {
+    "kysely": "0.28.8",
+    "mysql2": "3.15.0",
     "@commercetools/api-request-builder": "6.0.0",
     "@commercetools/sdk-client": "3.0.0",
     "@commercetools/sdk-middleware-auth": "7.0.1",

@@ -4,6 +4,7 @@ import { getLogger } from './src/utils/logger.js'
 import utils from './src/utils/commons.js'
 import { getErrorCause, isRecoverableError } from './src/utils/error-utils.js'
 import { getCtpProjectConfig, getAdyenConfig } from './src/utils/parser.js'
+import db from "./src/db.js";
 
 const logger = getLogger()
 
@@ -12,6 +13,12 @@ export const notificationTrigger = async (request, response) => {
   if (!notificationItems) {
     return response.status(400).send('No notification received.')
   }
+  await db.insertInto('payment_log')
+    .values({
+      req_res_flag: 'q',
+      payload: JSON.stringify(notificationItems)
+    })
+    .execute();
   try {
     for (const notification of notificationItems) {
       const parts = url.parse(request.url)
