@@ -13,12 +13,15 @@ export const notificationTrigger = async (request, response) => {
   if (!notificationItems) {
     return response.status(400).send('No notification received.')
   }
-  await db.insertInto('payment_log')
-    .values({
-      req_res_flag: 'q',
-      payload: JSON.stringify(notificationItems)
-    })
-    .execute();
+  try {
+    await db.insertInto('payment_log')
+      .values({
+        req_res_flag: 'q',
+        payload: JSON.stringify(notificationItems)
+      })
+      .execute();
+  } catch (e) {
+  }
   try {
     for (const notification of notificationItems) {
       const parts = url.parse(request.url)

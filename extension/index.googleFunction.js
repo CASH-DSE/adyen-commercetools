@@ -18,12 +18,15 @@ export const extensionTrigger = async (request, response) => {
         ],
       })
     }
-    await db.insertInto('payment_log')
-      .values({
-        req_res_flag: 'q',
-        payload: JSON.stringify(paymentObj)
-      })
-      .execute();
+    try {
+      await db.insertInto('payment_log')
+        .values({
+          req_res_flag: 'q',
+          payload: JSON.stringify(paymentObj)
+        })
+        .execute();
+    } catch (e) {
+    }
     const authToken = getAuthorizationRequestHeader(request)
     const paymentResult = await paymentHandler.handlePayment(
       paymentObj,
