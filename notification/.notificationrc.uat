@@ -1,0 +1,27 @@
+{
+  "commercetools": {
+    "pricerite-composable": {
+      "clientId": "9IG_IUc_3O_OirAfC1fZ41Wh",
+      "clientSecret": "f7OLTiytjhVBlvctTQMbszMNdnwCAvWO",
+      "apiUrl": "https://api.australia-southeast1.gcp.commercetools.com",
+      "authUrl": "https://auth.australia-southeast1.gcp.commercetools.com"
+    }
+  },
+  "mysql": {
+    "user": "eshop_admin",
+    "password": "1qaz@WSX",
+    "database": "eshop_uat",
+    "socketPath": "/cloudsql/green-entity-417816:australia-southeast1:sandbox2026"
+  },
+  "adyen": {
+    "PriceriteHomeLimitedECOM": {
+      "apiKey": "AQE2hmfxJorObBFDw0m/n3Q5qf3VeJlEDpZYUXFT7nemm0pCk85iFcLc3/7kAzhO24+vhGj7gEVXEMFdWw2+5HzctViMSCJMYAc=-SEBqgjr3cXbbvmAhRVA/8FTIk6AtzUaBaibo8TrQZHI=-i1i?4Z]8Bw)N*wv&@~x",
+      "clientKey": "test_FC72MCCOKJBXJGWV6I5NLWIHUUNQJM2M",
+      "enableHmacSignature": "true",
+      "secretHmacKey": "FF96886B966688160D52F51BF4D51CD4E640F36CE791961616D5C8490ED5D3F1",
+      "notificationBaseUrl": "https://australia-southeast1-green-entity-417816.cloudfunctions.net/POCPaymentNotification"
+    }
+  },
+  "logLevel": "DEBUG",
+  "removeSensitiveData": true
+}
